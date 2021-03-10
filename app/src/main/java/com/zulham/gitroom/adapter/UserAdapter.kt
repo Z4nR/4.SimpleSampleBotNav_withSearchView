@@ -30,14 +30,14 @@ class UserAdapter(private val list: ArrayList<ModelUser>)
         fun bind(user: ModelUser){
             with(itemView){
                 Glide.with(itemView.context)
-                        .load(user.photo)
+                        .load(user.avatar_url)
                         .apply(RequestOptions()
                                 .override(w, h))
                         .into(img_user)
 
-                tv_item_username.text = user.username
-                tv_item_country.text = user.location
-                tv_item_company.text = user.company
+                tv_item_username.text = user.login
+                tv_item_id.text = user.id.toString()
+                tv_item_url.text = user.url
 
                 itemView.setOnClickListener { onItemClickCallback?.onItemClicked(user) }
             }

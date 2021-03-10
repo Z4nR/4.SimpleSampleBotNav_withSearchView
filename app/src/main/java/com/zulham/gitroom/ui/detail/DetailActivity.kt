@@ -14,7 +14,7 @@ class DetailActivity : AppCompatActivity() {
 
         backHome()
 
-        detailUser()
+        //detailUser()
 
     }
 
@@ -23,7 +23,7 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    @SuppressLint("SetTextI18n")
+    /*@SuppressLint("SetTextI18n")
     private fun detailUser() {
         val user = intent.getParcelableExtra<ModelUser>("user")
         user?.let { img_user.setImageResource(it.photo) }
@@ -34,5 +34,5 @@ class DetailActivity : AppCompatActivity() {
         tv_repo_detail.text = user?.repository + "\n Repository"
         tv_follower_detail.text = user?.follower + "\n Follower"
         tv_following_detail.text = user?.following + "\n Following"
-    }
+    }*/
 }
