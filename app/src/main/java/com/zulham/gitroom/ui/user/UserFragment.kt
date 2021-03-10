@@ -68,7 +68,7 @@ class UserFragment : Fragment() {
         search_bar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 search_bar.clearFocus()
-                Toast.makeText(context, "Sorry, your search is unfound", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "this result about $query username", Toast.LENGTH_SHORT).show()
                 showLoading(true)
                 userViewModel.setData(query.toString())
                 return true
