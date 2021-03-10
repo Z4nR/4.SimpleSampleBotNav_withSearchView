@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">GitRoom</string>
+    <string name="title_user">User</string>
+    <string name="title_favourite">Favourite</string>
+    <string name="username">Username</string>
+    <string name="country">Country</string>
+    <string name="company">Company</string>
+    <string name="realname">RealName</string>
+    <string name="repository">repo</string>
+    <string name="follower">follower</string>
+    <string name="following">following</string>
+</resources>
