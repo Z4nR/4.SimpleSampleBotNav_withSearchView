@@ -1,16 +1,14 @@
 package com.zulham.gitroom.ui.detail
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.zulham.gitroom.R
-import com.zulham.gitroom.data.model.ModelUser
+import com.zulham.gitroom.adapter.PagerAdapter
 import com.zulham.gitroom.data.model.ModelUserDetail
 import kotlinx.android.synthetic.main.activity_detail.*
 
@@ -26,10 +24,15 @@ class DetailActivity : AppCompatActivity() {
 
         showLoading(true)
 
+        val sectionsPagerAdapter = PagerAdapter(this, supportFragmentManager)
+        vP_List.adapter = sectionsPagerAdapter
+        tabLayout.setupWithViewPager(vP_List)
+
         val user = intent.getStringExtra("user")
         detailViewModel = ViewModelProvider(this@DetailActivity, ViewModelProvider.NewInstanceFactory()).get(DetailViewModel::class.java)
 
         user.let {
+            sectionsPagerAdapter.username = it
             detailViewModel.setDetail(it)
         }
 
@@ -55,7 +58,6 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    @SuppressLint("SetTextI18n")
     private fun detailUser(userDetail: ModelUserDetail) {
         val w = 1000
         val h = 1000
@@ -69,9 +71,9 @@ class DetailActivity : AppCompatActivity() {
         tv_username_detail.text = userDetail.login
         tv_company_detail.text = userDetail.company
         tv_country_detail.text = userDetail.location
-        tv_repo_detail.text = userDetail.repository.toString() + "\n Repository"
-        tv_follower_detail.text = userDetail.follower.toString() + "\n Follower"
-        tv_following_detail.text = userDetail.following.toString() + "\n Following"
+        tv_repo_detail.text = StringBuilder(userDetail.repository.toString()).append("\n Repository")
+        tv_follower_detail.text = StringBuilder(userDetail.follower.toString()).append("\n Follower")
+        tv_following_detail.text = StringBuilder(userDetail.following.toString()).append("\n Following")
     }
 
     private fun showDetail(){

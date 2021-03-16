@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GitRoom</string>
+    <string name="title_user">Pengguna</string>
+    <string name="title_favourite">Favorit</string>
+    <string name="username">Nama Pengguna</string>
+    <string name="country">Daerah Asal</string>
+    <string name="company">Perusahaan</string>
+    <string name="realname">Nama Asli</string>
+    <string name="repository">Dokumen</string>
+    <string name="follower">Pengikut</string>
+    <string name="following">Mengikuti</string>
+    <string name="id">id</string>
+    <string name="url">url</string>
+
+    <string name="pushed_date">Pembaharuan Data Terakhir:</string>
+
+    <string name="language">Bahasa</string>
+    <string name="change_language">Ganti Bahasa</string>
+    <string name="alarm">Alarm</string>
+    <string name="off">Alarm Mati</string>
+    <string name="on">Alarm Berhasil DIsetel</string>
+    <string name="set_alarm">Setel Alarm</string>
+    <string name="setting">Pengaturan</string>
+    <string name="title_activity_settings">S</string>
+
+</resources>

@@ -5,8 +5,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class ModelUser (
-        var id: Int,
-        var login: String,
-        var avatar_url: String,
-        var url: String
+        var id: Int? = 0,
+        var login: String? = "",
+        var avatar_url: String? = "",
+        var url: String? = ""
 ) : Parcelable

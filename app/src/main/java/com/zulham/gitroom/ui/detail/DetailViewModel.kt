@@ -14,7 +14,7 @@ class DetailViewModel: ViewModel() {
 
     private val detailData = MutableLiveData<ModelUserDetail>()
 
-    private val isError: MutableLiveData<Boolean> = MutableLiveData<Boolean>(false)
+    private val isError: MutableLiveData<Boolean> = MutableLiveData(false)
 
     private val errorMessage = MutableLiveData<String>()
 
@@ -24,7 +24,7 @@ class DetailViewModel: ViewModel() {
 
         val url = "https://api.github.com/users/$login"
 
-        client.addHeader("Authorization", "Bearer 794a3071565e18c8d34881c1c816047c16d4d77f")
+        client.addHeader("Authorization", "Bearer e180388f2600ea71360c486c9b488b17cb78aab6")
         client.addHeader("User-Agent", "request")
         client.get(url, object : AsyncHttpResponseHandler(){
             override fun onSuccess(statusCode: Int, headers: Array<out Header>?, responseBody: ByteArray?) {

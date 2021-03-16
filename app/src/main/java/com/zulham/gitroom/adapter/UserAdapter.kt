@@ -29,7 +29,7 @@ class UserAdapter(private val list: ArrayList<ModelUser>)
 
         fun bind(user: ModelUser){
             with(itemView){
-                Glide.with(itemView.context)
+                Glide.with(context)
                         .load(user.avatar_url)
                         .apply(RequestOptions()
                                 .override(w, h))

@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -35,8 +34,6 @@ class UserFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        search()
-
         showLoading(true)
 
         userViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(UserViewModel::class.java)
@@ -59,6 +56,8 @@ class UserFragment : Fragment() {
 
             recycleV(it)
 
+            search()
+
             showLoading(false)
 
         })
@@ -68,9 +67,13 @@ class UserFragment : Fragment() {
         search_bar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 search_bar.clearFocus()
+
                 Toast.makeText(context, "this result about $query username", Toast.LENGTH_SHORT).show()
+
                 showLoading(true)
+
                 userViewModel.setData(query.toString())
+
                 return true
             }
 
@@ -108,7 +111,7 @@ class UserFragment : Fragment() {
     }
 
     private fun showErrorMessage() {
-        userViewModel.getErrorMessage().observe(viewLifecycleOwner, Observer {
+        userViewModel.getErrorMessage().observe(viewLifecycleOwner, {
             Toast.makeText(context, it, Toast.LENGTH_LONG).show()
         })
     }

@@ -1,0 +1,30 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/language">
+        <ListPreference
+            android:id="@+id/change_language"
+            android:defaultValue="English"
+            android:entries="@array/language_entries"
+            android:entryValues="@array/language_value"
+            android:icon="@drawable/ic_baseline_language_24"
+            android:key="@string/LANGUAGE"
+            android:title="@string/change_language"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/alarm">
+
+        <SwitchPreference
+            android:id="@+id/alarm"
+            android:defaultValue="false"
+            android:icon="@drawable/ic_baseline_access_alarm_24"
+            android:key="ALARM"
+            android:summaryOff="@string/off"
+            android:summaryOn="@string/on"
+            android:title="@string/set_alarm" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

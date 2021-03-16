@@ -14,8 +14,7 @@ class SplashActivity : AppCompatActivity() {
         val splashScreenTimeOut = 3000
         val homeIntent = Intent(this, MainActivity::class.java)
 
-        @Suppress("DEPRECATION")
-        Handler().postDelayed({
+        Handler(mainLooper).postDelayed({
             startActivity(homeIntent)
             finish()
         }, splashScreenTimeOut.toLong())
