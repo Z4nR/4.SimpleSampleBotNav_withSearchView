@@ -21,6 +21,8 @@
     <string name="off">Alarm Off</string>
     <string name="on">Alarm Set Up Done</string>
     <string name="set_alarm">Set Alarm</string>
+    
     <string name="LANGUAGE">LANGUAGE</string>
+    <string name="ALARM">ALARM</string>
 
 </resources>

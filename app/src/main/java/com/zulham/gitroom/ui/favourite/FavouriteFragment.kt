@@ -19,14 +19,16 @@ class FavouriteFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        favouriteViewModel =
-                ViewModelProvider(this).get(FavouriteViewModel::class.java)
+        favouriteViewModel = ViewModelProvider(this).get(FavouriteViewModel::class.java)
         return inflater.inflate(R.layout.fragment_favourite, container, false)
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        favouriteViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(FavouriteViewModel::class.java)
+
 
     }
 }

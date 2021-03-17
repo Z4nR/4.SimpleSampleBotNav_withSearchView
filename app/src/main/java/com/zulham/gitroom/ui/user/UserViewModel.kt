@@ -27,7 +27,7 @@ class UserViewModel : ViewModel() {
 
         val url = "https://api.github.com/search/users?q=$username"
 
-        client.addHeader("Authorization", "Bearer e180388f2600ea71360c486c9b488b17cb78aab6")
+        client.addHeader("Authorization", "Bearer 5bab7dbcce1724c50dcc2f17d17153601e05945c")
         client.addHeader("User-Agent", "request")
         client.get(url, object : AsyncHttpResponseHandler(){
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {

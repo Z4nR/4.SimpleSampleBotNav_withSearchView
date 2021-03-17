@@ -22,7 +22,8 @@
     <string name="off">Alarm Mati</string>
     <string name="on">Alarm Berhasil DIsetel</string>
     <string name="set_alarm">Setel Alarm</string>
-    <string name="setting">Pengaturan</string>
-    <string name="title_activity_settings">S</string>
+    <string name="title_activity_settings">Pengaturan</string>
+
+    <string name="LANGUAGE">LANGUAGE</string>
 
 </resources>

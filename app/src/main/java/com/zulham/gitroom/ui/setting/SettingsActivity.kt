@@ -1,14 +1,16 @@
 package com.zulham.gitroom.ui.setting
 
-import android.content.Context
-import android.content.SharedPreferences
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreference
 import com.zulham.gitroom.R
+
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -24,55 +26,34 @@ class SettingsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
-
-        companion object{
-
-            const val LANG = "language"
-
-        }
+    class SettingsFragment : PreferenceFragmentCompat(){
 
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
 
-            initiate()
+            changeLanguage()
+            reminderAlarm()
 
         }
 
-        private fun initiate() {
-            val listPreference = findPreference<Preference>(getString(R.string.LANGUAGE)) as ListPreference?
-            listPreference?.setOnPreferenceChangeListener { preference, newValue ->
-                if (preference is ListPreference) {
-                    val index = preference.findIndexOfValue(newValue.toString())
-                    val entry = preference.entries.get(index)
-                    val entryvalue = preference.entryValues.get(index)
-                    Log.i("selected val", " position - $index value - $entry, entryvalue - $entryvalue ")
+        private fun reminderAlarm() {
+            val switchPreference = findPreference<Preference>(getString(R.string.ALARM)) as SwitchPreference
+            switchPreference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference, newValue ->
+
+                if (switchPreference.isEnabled) {
+                    Toast.makeText(context, "Sorry this feature can't use now", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(context, "Alarm Deactivated", Toast.LENGTH_SHORT).show()
                 }
 
-                true
+                return@OnPreferenceChangeListener switchPreference.isEnabled
+
             }
         }
 
-        private fun setLang(lang : String){
-            val sharedPreferences = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
-            with(sharedPreferences.edit()){
-                putString(LANG, lang)
-                commit()
-            }
-        }
-
-        override fun onResume() {
-            super.onResume()
-            preferenceScreen.sharedPreferences.registerOnSharedPreferenceChangeListener(this)
-        }
-
-        override fun onPause() {
-            super.onPause()
-            preferenceScreen.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
-        }
-
-        override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-            TODO("Not yet implemented")
+        private fun changeLanguage() {
+            val preference = findPreference<Preference>(getString(R.string.LANGUAGE))
+            preference?.intent = Intent(Settings.ACTION_LOCALE_SETTINGS)
         }
 
     }

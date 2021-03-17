@@ -26,8 +26,7 @@ class UserFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        userViewModel =
-                ViewModelProvider(this).get(UserViewModel::class.java)
+        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         return inflater.inflate(R.layout.fragment_user, container, false)
     }
 

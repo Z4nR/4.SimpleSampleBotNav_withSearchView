@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class FavouriteViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "Sorry, this feature will update soon, please stay tune. \n \n Regard \n Z|Storm"
+        value = "Whoaahh thanks for attentionn, please wait few time new feature will release  \n \n Regard \n Z|Storm"
     }
     val text: LiveData<String> = _text
 }
