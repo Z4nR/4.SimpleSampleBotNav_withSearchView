@@ -17,7 +17,9 @@ class UserViewModel : ViewModel() {
 
     private val errorMessage = MutableLiveData<String>()
 
-    fun setData(username: String){
+    private val searchUser = MutableLiveData<String>()
+
+    fun setData(query: String){
 
         isError.value = false
 
@@ -25,9 +27,9 @@ class UserViewModel : ViewModel() {
 
         val client = AsyncHttpClient()
 
-        val url = "https://api.github.com/search/users?q=$username"
+        val url = "https://api.github.com/search/users?q=$query"
 
-        client.addHeader("Authorization", "Bearer 5bab7dbcce1724c50dcc2f17d17153601e05945c")
+        client.addHeader("Authorization", "Bearer //token")
         client.addHeader("User-Agent", "request")
         client.get(url, object : AsyncHttpResponseHandler(){
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
@@ -76,6 +78,14 @@ class UserViewModel : ViewModel() {
 
     fun getData(): LiveData<ArrayList<ModelUser>>{
         return listUsers
+    }
+
+    fun setSearch(userSearch : String){
+        searchUser.value = userSearch
+    }
+
+    fun getSearchData(): LiveData<String> {
+        return searchUser
     }
 
     fun setError(error: Boolean, message: String) {

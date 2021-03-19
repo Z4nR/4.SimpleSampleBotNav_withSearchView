@@ -2,6 +2,7 @@ package com.zulham.gitroom.ui.user
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,8 @@ class UserFragment : Fragment() {
 
     private lateinit var userViewModel: UserViewModel
 
+    private lateinit var searchQuery: String
+
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -35,9 +38,13 @@ class UserFragment : Fragment() {
 
         showLoading(true)
 
+        searchQuery = "Z4nR"
+
+        search()
+
         userViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(UserViewModel::class.java)
 
-        userViewModel.setData("Z4nR")
+        userViewModel.setData(searchQuery)
 
         userViewModel.getIsError().observe(viewLifecycleOwner, {
 
@@ -55,8 +62,6 @@ class UserFragment : Fragment() {
 
             recycleV(it)
 
-            search()
-
             showLoading(false)
 
         })
@@ -71,7 +76,9 @@ class UserFragment : Fragment() {
 
                 showLoading(true)
 
-                userViewModel.setData(query.toString())
+                searchQuery = query!!
+
+                userViewModel.setData(searchQuery)
 
                 return true
             }

@@ -40,13 +40,15 @@ class SettingsActivity : AppCompatActivity() {
             val switchPreference = findPreference<Preference>(getString(R.string.ALARM)) as SwitchPreference
             switchPreference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference, newValue ->
 
-                if (switchPreference.isEnabled) {
-                    Toast.makeText(context, "Sorry this feature can't use now", Toast.LENGTH_SHORT).show()
+                val value = newValue as Boolean
+
+                if (value) {
+                    Toast.makeText(context, "Sorry this feature can't use now \n Alarm Activated", Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(context, "Alarm Deactivated", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Sorry this feature can't use now \n Alarm Deactivated", Toast.LENGTH_SHORT).show()
                 }
 
-                return@OnPreferenceChangeListener switchPreference.isEnabled
+                return@OnPreferenceChangeListener true
 
             }
         }

@@ -25,7 +25,7 @@ class RepoViewModel: ViewModel() {
 
         val url = "https://api.github.com/users/$login/repos"
 
-        client.addHeader("Authorization", "Bearer 5bab7dbcce1724c50dcc2f17d17153601e05945c")
+        client.addHeader("Authorization", "Bearer //token")
         client.addHeader("User-Agent", "request")
         client.get(url, object : AsyncHttpResponseHandler(){
             override fun onSuccess(
