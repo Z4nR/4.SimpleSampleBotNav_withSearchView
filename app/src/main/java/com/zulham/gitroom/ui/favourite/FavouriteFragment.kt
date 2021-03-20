@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.zulham.gitroom.R
+import kotlinx.android.synthetic.main.fragment_favourite.*
 
 class FavouriteFragment : Fragment() {
 
@@ -28,6 +29,12 @@ class FavouriteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         favouriteViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(FavouriteViewModel::class.java)
+
+        favouriteViewModel.setTesString("Whoaahh thanks for attentionn, please wait few time new feature will release  \n \n Regard \n Z Studio")
+
+        favouriteViewModel.getTesString().observe(viewLifecycleOwner, {
+            text_favourite.text = it
+        })
 
 
     }

@@ -19,7 +19,9 @@ class UserViewModel : ViewModel() {
 
     private val searchUser = MutableLiveData<String>()
 
-    fun setData(query: String){
+    fun setData(){
+
+        val query = searchUser.value ?: "Z4nR"
 
         isError.value = false
 
@@ -82,10 +84,6 @@ class UserViewModel : ViewModel() {
 
     fun setSearch(userSearch : String){
         searchUser.value = userSearch
-    }
-
-    fun getSearchData(): LiveData<String> {
-        return searchUser
     }
 
     fun setError(error: Boolean, message: String) {

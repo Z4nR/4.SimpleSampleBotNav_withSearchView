@@ -22,14 +22,11 @@ class UserFragment : Fragment() {
 
     private lateinit var userViewModel: UserViewModel
 
-    private lateinit var searchQuery: String
-
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         return inflater.inflate(R.layout.fragment_user, container, false)
     }
 
@@ -38,13 +35,11 @@ class UserFragment : Fragment() {
 
         showLoading(true)
 
-        searchQuery = "Z4nR"
-
         search()
 
         userViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(UserViewModel::class.java)
 
-        userViewModel.setData(searchQuery)
+        userViewModel.setData()
 
         userViewModel.getIsError().observe(viewLifecycleOwner, {
 
@@ -74,11 +69,11 @@ class UserFragment : Fragment() {
 
                 Toast.makeText(context, "this result about $query username", Toast.LENGTH_SHORT).show()
 
+                userViewModel.setSearch(query!!)
+
+                userViewModel.setData()
+
                 showLoading(true)
-
-                searchQuery = query!!
-
-                userViewModel.setData(searchQuery)
 
                 return true
             }

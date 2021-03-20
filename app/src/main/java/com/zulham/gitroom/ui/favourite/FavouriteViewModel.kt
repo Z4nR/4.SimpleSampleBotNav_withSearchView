@@ -6,8 +6,13 @@ import androidx.lifecycle.ViewModel
 
 class FavouriteViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "Whoaahh thanks for attentionn, please wait few time new feature will release  \n \n Regard \n Z|Storm"
+    private val tesString = MutableLiveData<String>()
+
+    fun getTesString(): LiveData<String> {
+        return tesString
     }
-    val text: LiveData<String> = _text
+
+    fun setTesString(tesString: String) {
+        this.tesString.postValue(tesString)
+    }
 }
