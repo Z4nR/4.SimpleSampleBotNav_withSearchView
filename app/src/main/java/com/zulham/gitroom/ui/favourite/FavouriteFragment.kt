@@ -30,11 +30,6 @@ class FavouriteFragment : Fragment() {
 
         favouriteViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(FavouriteViewModel::class.java)
 
-        favouriteViewModel.setTesString("Whoaahh thanks for attentionn, please wait few time new feature will release  \n \n Regard \n Z Studio")
-
-        favouriteViewModel.getTesString().observe(viewLifecycleOwner, {
-            text_favourite.text = it
-        })
 
 
     }
