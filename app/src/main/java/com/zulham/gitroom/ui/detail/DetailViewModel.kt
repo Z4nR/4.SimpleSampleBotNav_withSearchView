@@ -24,7 +24,7 @@ class DetailViewModel: ViewModel() {
 
         val url = "https://api.github.com/users/$login"
 
-        client.addHeader("Authorization", "Bearer d41c12ec791693157de07e436a0c84dda7c4db59")
+        client.addHeader("Authorization", "Bearer token")
         client.addHeader("User-Agent", "request")
         client.get(url, object : AsyncHttpResponseHandler(){
             override fun onSuccess(statusCode: Int, headers: Array<out Header>?, responseBody: ByteArray?) {
@@ -42,7 +42,9 @@ class DetailViewModel: ViewModel() {
                                 repository = res.getInt("public_repos"),
                                 login = checkNullToString(res, "login"),
                                 follower = res.getInt("followers"),
-                                following = res.getInt("following")
+                                following = res.getInt("following"),
+                                url = res.getString("url"),
+                                id = res.getInt("id")
                         )
 
                         detailData.value = detailUser

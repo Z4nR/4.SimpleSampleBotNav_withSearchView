@@ -3,6 +3,15 @@
     package="com.zulham.gitroom">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <permission
+        android:name="com.zulham.gitroom.READ_DATABASE"
+        android:protectionLevel="normal" />
+    <permission
+        android:name="com.zulham.gitroom.WRITE_DATABASE"
+        android:protectionLevel="normal" />
 
     <application
         android:allowBackup="true"
@@ -11,10 +20,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GitRoom">
+
+        <provider
+            android:name=".utils.provider.Provider"
+            android:authorities="com.zulham.gitroom"
+            android:enabled="true"
+            android:exported="true"
+            android:readPermission="com.zulham.gitroom.READ_DATABASE"
+            android:writePermission="com.zulham.gitroom.WRITE_DATABASE" />
+
         <activity
             android:name=".ui.setting.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".ui.MainActivity"/>
+            android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.SplashActivity"
             android:theme="@style/Theme.GitRoomSplash">
@@ -29,7 +47,13 @@
             android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.MainActivity"
-            android:label="@string/app_name" />
+            android:label="@string/app_name"
+            android:launchMode="singleTask"/>
+
+        <receiver
+            android:name=".utils.reminder.AlarmReminder"
+            android:enabled="true"
+            android:exported="true"/>
     </application>
 
 </manifest>

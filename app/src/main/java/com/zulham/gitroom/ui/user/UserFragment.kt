@@ -16,7 +16,9 @@ import com.zulham.gitroom.adapter.UserAdapter
 import com.zulham.gitroom.data.model.ModelUser
 import com.zulham.gitroom.ui.detail.DetailActivity
 import kotlinx.android.synthetic.main.fragment_user.*
+import kotlinx.coroutines.InternalCoroutinesApi
 
+@InternalCoroutinesApi
 class UserFragment : Fragment() {
 
     private lateinit var userViewModel: UserViewModel
@@ -84,7 +86,7 @@ class UserFragment : Fragment() {
     }
 
     private fun recycleV(users: ArrayList<ModelUser>) {
-        rv_ListFav.apply {
+        rv_ListUser.apply {
             val userAdapter = UserAdapter(users)
 
             adapter = userAdapter

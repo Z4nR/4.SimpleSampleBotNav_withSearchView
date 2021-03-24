@@ -18,12 +18,17 @@
 
     <string name="language">Bahasa</string>
     <string name="change_language">Ganti Bahasa</string>
-    <string name="alarm">Alarm</string>
-    <string name="off">Alarm Mati</string>
-    <string name="on">Alarm Berhasil DIsetel</string>
-    <string name="set_alarm">Setel Alarm</string>
+    <string name="alarm">Pengingat</string>
+    <string name="off">Pengingat Mati</string>
+    <string name="on">Pengingat Berhasil Disetel</string>
+    <string name="set_alarm">Setel Pengingat</string>
     <string name="title_activity_settings">Pengaturan</string>
 
     <string name="LANGUAGE">LANGUAGE</string>
+    <string name="ALARM">ALARM</string>
+    <string name="appwidget_text">Bagian Favorit</string>
+    <string name="configure">Konfigurasi</string>
+    <string name="add_widget">Tambah Widget</string>
+    <string name="empty_data">Tidak Ada Data</string>
 
 </resources>

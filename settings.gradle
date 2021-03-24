@@ -1,2 +1,3 @@
+include ':consumergitroom'
 include ':app'
 rootProject.name = "GitRoom"

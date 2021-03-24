@@ -5,4 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class FavouriteViewModel : ViewModel() {
+    
+    
+    
 }

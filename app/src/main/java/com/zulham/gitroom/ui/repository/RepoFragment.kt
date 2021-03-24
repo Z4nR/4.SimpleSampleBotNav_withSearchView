@@ -6,17 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.zulham.gitroom.R
-import com.zulham.gitroom.adapter.FollowAdapter
 import com.zulham.gitroom.adapter.RepoAdapter
-import com.zulham.gitroom.data.model.ModelFollow
 import com.zulham.gitroom.data.model.ModelRepo
-import com.zulham.gitroom.ui.following.FollowingFragment
-import kotlinx.android.synthetic.main.fragment_following.*
 import kotlinx.android.synthetic.main.fragment_repo.*
 
 private const val ARG_PARAM1 = "param1"
@@ -31,7 +26,7 @@ class RepoFragment : Fragment() {
 
     companion object {
 
-        val USERNAME = "username"
+        const val USERNAME = "username"
 
     }
 
@@ -99,7 +94,7 @@ class RepoFragment : Fragment() {
     }
 
     private fun showErrorMessage(){
-        repoViewModel.getErrorMessage().observe(viewLifecycleOwner, Observer {
+        repoViewModel.getErrorMessage().observe(viewLifecycleOwner, {
             Toast.makeText(view?.context, it, Toast.LENGTH_LONG).show()
         })
     }

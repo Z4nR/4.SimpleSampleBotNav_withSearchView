@@ -10,8 +10,11 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
 import com.zulham.gitroom.R
+import com.zulham.gitroom.utils.reminder.AlarmReminder
+import kotlinx.coroutines.InternalCoroutinesApi
 
 
+@InternalCoroutinesApi
 class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +31,8 @@ class SettingsActivity : AppCompatActivity() {
 
     class SettingsFragment : PreferenceFragmentCompat(){
 
+        private lateinit var alarmReminder: AlarmReminder
+
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
 
@@ -37,15 +42,16 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         private fun reminderAlarm() {
+            alarmReminder = AlarmReminder()
             val switchPreference = findPreference<Preference>(getString(R.string.ALARM)) as SwitchPreference
             switchPreference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference, newValue ->
 
                 val value = newValue as Boolean
 
                 if (value) {
-                    Toast.makeText(context, "Sorry this feature can't use now \n Alarm Activated", Toast.LENGTH_SHORT).show()
+                    alarmReminder.setRepeatingAlarm(requireContext(), AlarmReminder.TYPE_REPEATING)
                 } else {
-                    Toast.makeText(context, "Sorry this feature can't use now \n Alarm Deactivated", Toast.LENGTH_SHORT).show()
+                    alarmReminder.cancelAlarm(requireContext())
                 }
 
                 return@OnPreferenceChangeListener true

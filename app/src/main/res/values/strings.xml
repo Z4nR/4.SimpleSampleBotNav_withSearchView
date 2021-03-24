@@ -21,8 +21,13 @@
     <string name="off">Alarm Off</string>
     <string name="on">Alarm Set Up Done</string>
     <string name="set_alarm">Set Alarm</string>
-    
+
     <string name="LANGUAGE">LANGUAGE</string>
     <string name="ALARM">ALARM</string>
+
+    <string name="appwidget_text">Favourite Side</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
+    <string name="empty_data">No Data</string>
 
 </resources>

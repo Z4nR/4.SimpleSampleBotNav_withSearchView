@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
+import com.zulham.gitroom.database.db.DatabaseContract.FavColumns.Companion.IS_FAV
 import com.zulham.gitroom.database.db.DatabaseContract.FavColumns.Companion.TABLE_NAME
 import com.zulham.gitroom.database.db.DatabaseContract.FavColumns.Companion.USER_NAME
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -17,7 +18,7 @@ class FavHelper(context: Context) {
         private var INSTANCE: FavHelper? = null
         @InternalCoroutinesApi
         fun getInstance(context: Context): FavHelper =
-            INSTANCE ?: kotlinx.coroutines.internal.synchronized(this) {
+            INSTANCE ?: synchronized(this){
                 INSTANCE ?: FavHelper(context)
             }
 
@@ -44,7 +45,7 @@ class FavHelper(context: Context) {
         return database.query(
             DB_TABLE,
             null,
-            "${DatabaseContract.FavColumns.IS_FAV} = '1'",
+            "$IS_FAV = '1'",
             null,
             null,
             null,
@@ -79,5 +80,6 @@ class FavHelper(context: Context) {
         }
         return database.update(DB_TABLE, values, "$USER_NAME = ?", arrayOf(id))
     }
+
 
 }

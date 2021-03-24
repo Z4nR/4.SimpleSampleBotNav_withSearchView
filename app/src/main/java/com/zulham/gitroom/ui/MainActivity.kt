@@ -10,11 +10,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.zulham.gitroom.R
+import com.zulham.gitroom.database.db.FavHelper
 import com.zulham.gitroom.ui.setting.SettingsActivity
+import kotlinx.coroutines.InternalCoroutinesApi
 
+@InternalCoroutinesApi
 class MainActivity : AppCompatActivity() {
 
     private var backPressed: Long = 0
+
+    private lateinit var favHelper: FavHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +29,14 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         navView.setupWithNavController(navController)
 
+        favHelper = FavHelper.getInstance(applicationContext)
+        favHelper.open()
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        favHelper.close()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

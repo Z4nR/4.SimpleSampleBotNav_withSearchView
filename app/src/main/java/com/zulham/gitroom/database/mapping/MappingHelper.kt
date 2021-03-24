@@ -6,18 +6,19 @@ import com.zulham.gitroom.database.entity.ModelFav
 
 object MappingHelper {
 
-    fun mapCursorToArrayList(favsCursor: Cursor?): ArrayList<ModelFav> {
-        val favsList = ArrayList<ModelFav>()
-        favsCursor?.apply {
+    fun mapCursorToArrayList(favCursor: Cursor?): ArrayList<ModelFav> {
+        val favList = ArrayList<ModelFav>()
+        favCursor?.apply {
             while (moveToNext()) {
-                val imgUser = getString(getColumnIndexOrThrow(DatabaseContract.FavColumns.IMG_USER))
-                val userID = getInt(getColumnIndexOrThrow(DatabaseContract.FavColumns.USER_ID))
-                val userName = getString(getColumnIndexOrThrow(DatabaseContract.FavColumns.USER_NAME))
-                val userUrl = getString(getColumnIndexOrThrow(DatabaseContract.FavColumns.USER_URL))
-                favsList.add(ModelFav(userID, userName, imgUser, userUrl))
+                val id = getInt(getColumnIndexOrThrow(DatabaseContract.FavColumns.USER_ID))
+                val login = getString(getColumnIndexOrThrow(DatabaseContract.FavColumns.LOGIN))
+                val userImg = getString(getColumnIndexOrThrow(DatabaseContract.FavColumns.IMG_USER))
+                val userUrl= getString(getColumnIndexOrThrow(DatabaseContract.FavColumns.USER_URL))
+                val name = getString(getColumnIndexOrThrow(DatabaseContract.FavColumns.USER_NAME))
+                favList.add(ModelFav(id, login, userImg, userUrl, name))
             }
         }
-        return favsList
+        return favList
     }
 
 }
